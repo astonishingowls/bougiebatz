@@ -1,9 +1,12 @@
 <header class="navigation2 col-xs-12">
-  <div class="logo">
+  <div class="logo col-xs-12 col-md-2">
     <img src="../../assets/icon.png">
     <p class="title">Legacy Owls</p>
   </div>
-  <div ng-controller="logoutController" class="logout">
+  <div class="heading col-xs-12 col-md-8">
+    Virtual News
+  </div>
+  <div ng-controller="logoutController" class="logout col-xs-12 col-md-2">
     <a ng-click='logout()' class="btn btn-default">Logout</a>
   </div>
 </header>
@@ -28,3 +31,7 @@
     <p>Abstract: {{article.abstract}}</p>
   </div>
 </div>
+
+<footer class="footer col-xs-12">
+  <p>Updated with <i class="fa fa-heart faa-pulse animated" aria-hidden="true"></i> by Astonishing Owls Inc. </p>
+</footer>

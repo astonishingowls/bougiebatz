@@ -1,4 +1,8 @@
 ////----------------------------------*\
+//// SCSS FONTS
+////----------------------------------*/
+@import 'fonts/fonts';
+////----------------------------------*\
 //// SCSS MIXINS
 ////----------------------------------*/
 @import 'mixins/mixins';
@@ -29,6 +33,10 @@
 body {
     background: $light-grey;
     color: $white;
+
+    @media #{$mq-xs, $mq-sm} {
+        background: $charcoal;
+    }
 }
 
 input {

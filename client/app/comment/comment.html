@@ -16,23 +16,22 @@
   <a class="btn btn-default" ng-disabled="disabled" href="#/trending">Trending Stories</a>
   <a class="btn btn-default" ng-disabled="disabled" href="#/savedStory">Saved Stories</a>
 </div>
+<div  ng-controller="commentBox">
+  <a class="btn btn-default" href="" ng-click="toggle()">Comment Form</a>
+  <!-- <a class="btn btn-default" href="" ng-click="toggle($scope)">Comment Form</a> -->
 
-<div class="main col-xs-12">
-  <div>
-    <select ng-model='selectedOption' ng-change='getLatest()'>
-      <option ng-repeat='option in options'>{{option}}</option>
-    </select>
-  </div>
+    <div style="background-color: grey;" pageslide ps-open="checked" ps-speed="0.25">
+    <div style="padding:20px; " >
 
-  <div classname='largePhotos' ng-repeat='($index, photo) in photos'>
-    <a className="show" href={{photo.url}} target="_blank">
-     <img className='showImg' ng-src={{photo.multimedia[3].url}} />
-    </a>
-    <div className="reveal">{{photo.abstract}}</div>
-    <button ng-click='saveStory($index)'>Save Story</button>
-    <button ng-disabled='likes[photo.url]' ng-click='like($index)'>Like</button>
+    <div>Show all comments related to clicked article</div>
+    <div>{{testComment}}</div>
+    <input type="text" ng-model="userInputComment">
+    <a class='btn btn-default' ng-click="submitComment(); refreshComment()">Submit</a>
+    <a ng-click="toggle()" style="color:black" class="btn" >Close</a>
+    </div>
   </div>
 </div>
+
 <footer class="footer col-xs-12">
   <p>Updated with <i class="fa fa-heart faa-pulse animated" aria-hidden="true"></i> by Astonishing Owls Inc. </p>
 </footer>

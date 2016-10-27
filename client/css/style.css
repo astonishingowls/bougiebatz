@@ -1,3 +1,8 @@
+@font-face {
+  font-family: canterbury;
+  src: url("../../assets/fonts/Canterbury.eot");
+  src: url("../../assets/fonts/Canterbury.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Canterbury.woff2") format("woff2"), url("../../assets/fonts/Canterbury-Regular.woff") format("woff"), url("../../assets/fonts/Canterbury.ttf") format("truetype"), url("../../assets/fonts/Canterbury-Regular.svg#${regular-font}") format("svg"); }
+
 .clear:before, .clear:after {
   content: ' ';
   display: table; }
@@ -393,6 +398,12 @@ header.navigation2 {
   background-color: #595959;
   height: 100px; }
 
+.heading {
+  font-family: Canterbury;
+  text-align: center;
+  font-size: 60px;
+  padding-top: 12px; }
+
 .logo {
   display: inline-block;
   padding-top: 5px; }
@@ -453,52 +464,61 @@ header.navigation2 {
       color: #595959;
       border: 2px solid white; }
 
-.fullscreen-bg {
+.fullscreen-bg__video {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100; }
-
-.fullscreen-bg__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
+  right: 0;
+  z-index: -1000;
+  width: 100%; }
+  @media (max-width: 767px), (min-width: 768px) and (max-width: 991px) {
+    .fullscreen-bg__video {
+      display: none; } }
 
 .login_body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh; }
-  .login_body #login .tagline {
-    margin-bottom: 15px;
-    text-align: center; }
-  .login_body #login a {
-    border: 2px solid #fff;
-    background: none;
-    color: #fff;
-    border-radius: 25px;
-    width: 150px;
-    margin-top: 10px; }
-    .login_body #login a:hover {
-      background: white;
-      color: #595959;
-      border: 2px solid white; }
-  .login_body #login form button {
-    border: 2px solid #fff;
-    background: none;
-    color: #fff;
-    border-radius: 25px;
-    width: 150px;
-    margin-top: 10px; }
-    .login_body #login form button:hover {
-      background: white;
-      color: #595959;
-      border: 2px solid white; }
+  .login_body .other {
+    display: none; }
+    @media (min-width: 1200px) and (max-width: 1599px), (min-width: 1600px) {
+      .login_body .other {
+        display: block; } }
+  .login_body #login {
+    background: #000026;
+    opacity: .65;
+    padding: 15px;
+    margin-top: 100px; }
+    @media (max-width: 767px), (min-width: 768px) and (max-width: 991px) {
+      .login_body #login {
+        opacity: 100; } }
+    .login_body #login .tagline {
+      margin-bottom: 15px;
+      text-align: center; }
+    .login_body #login a {
+      border: 2px solid #fff;
+      background: none;
+      color: #fff;
+      border-radius: 25px;
+      width: 150px;
+      margin-top: 10px; }
+      .login_body #login a:hover {
+        background: white;
+        color: #595959;
+        border: 2px solid white; }
+    .login_body #login form button {
+      border: 2px solid #fff;
+      background: none;
+      color: #fff;
+      border-radius: 25px;
+      width: 150px;
+      margin-top: 10px; }
+      .login_body #login form button:hover {
+        background: white;
+        color: #595959;
+        border: 2px solid white; }
 
 .main {
   margin-top: 125px; }
@@ -516,6 +536,9 @@ header.navigation2 {
 body {
   background: #e5e5e9;
   color: #fff; }
+  @media (max-width: 767px), (min-width: 768px) and (max-width: 991px) {
+    body {
+      background: #333333; } }
 
 input {
   color: black; }
