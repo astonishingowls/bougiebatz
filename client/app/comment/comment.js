@@ -19,22 +19,35 @@ angular.module('legacyOwls.comment', ["pageslide-directive"])
 ///////////////////////////////
 /////For Trending Articles/////
 ///////////////////////////////
-    // $scope.toggle = function(index) {
-    //     $scope.checked = !$scope.checked
-    //     $scope.idx = index;
-    //     console.log($scope.idx)
+    $scope.toggleTrending = function(index) {
+        $scope.checked = !$scope.checked
+        $scope.idx = index;
+        console.log($scope.idx)
 
-    //  Trending.getAll().then(function(res){
+     Trending.getAll().then(function(res){
 
-    //      $scope.articleTitle; //Need to find articleTitle
+       $scope.articleTitle; //Need to find articleTitle
+        $scope.article = res.data[$scope.idx];
+        // console.log(res.data[$scope.idx]);
+        console.log($scope.article.articleData, ' LINE 32, comment.js')
+        console.log(res.data);
+     })
 
-    //     $scope.articleId = res.data[$scope.idx]._id;
+     $scope.submitComment = function(){
+        var sendToDB = {};
+        sendToDB.article = $scope.article.articleData;
+        var commentData = {}
+        commentData.articleTitle = $scope.article.title
+        commentData.user = $scope.username = 'Anonymous'; //grab user name
+        commentData.comment = $scope.userInputComment;
+        sendToDB.commentData = commentData;
 
-    //   console.log(res.data[$scope.idx]._id);
+        Comment.postComment(sendToDB)
+        $scope.newComment.push($scope.userInputComment);
+        $scope.userInputComment = '';
 
-    //   console.log(res.data);
-    //  })
-    // }//End of Toggle Button for Article
+    }
+    }//End of Toggle Button for Article
 
 
 
@@ -65,7 +78,7 @@ angular.module('legacyOwls.comment', ["pageslide-directive"])
           return photo.multimedia.length === 4;
         });
       $scope.article = $scope.articles[$scope.idx];
-
+      console.log($scope.article, ' LINE 81, comment.js ')
       //Receive all comments when toggle is clicked.
       $scope.refreshComment = function(){
         //receive all comment data
