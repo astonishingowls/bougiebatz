@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({
 
 
 router.get('/Large', (req, res) => {
-  var reqUrl = 'http://api.nytimes.com/svc/news/v3/content/'
+  var reqUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?&api-key=9bade4c4495a434ca63397ba33cc87c2'
     + req.query.source + '/'
     + req.query.section + '/'
     + req.query.time + '.json'
@@ -28,7 +28,7 @@ router.get('/Large', (req, res) => {
     if (error) throw new Error(error);
     res.send(body);
   });
-  
+
 });
 
 module.exports = router;
