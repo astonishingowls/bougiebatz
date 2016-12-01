@@ -14,11 +14,11 @@ router.use(bodyParser.urlencoded({
 
 router.get('/Large', (req, res) => {
   var reqUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?&api-key=9bade4c4495a434ca63397ba33cc87c2'
-    + req.query.source + '/'
-    + req.query.section + '/'
-    + req.query.time + '.json'
-    + '?limit=' + req.query.limit
-    + '&offset=' + req.query.offset;
+    // + req.query.source + '/'
+    // + req.query.section + '/'
+    // + req.query.time + '.json'
+    // + '?limit=' + req.query.limit
+    // + '&offset=' + req.query.offset;
 
   var options = {
     method: 'GET',

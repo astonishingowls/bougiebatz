@@ -11,23 +11,24 @@ angular.module('legacyOwls.latest', [])
 
     // The parameters of the NYT API call
     var params = {
-      source: 'all',
-      section: $scope.selectedOption, // Option in the dropdown menu
-      time: '24', // Gets results from the last 24 hours
-      limit: 40, // Limit getting to 40 results
-      offset: 0
+      // source: 'all',
+      // section: $scope.selectedOption, // Option in the dropdown menu
+      // time: '24', // Gets results from the last 24 hours
+      // hits: 40, // Limit getting to 40 results
+      // offset: 0
     }
+
 
     /*
       Because we are using a non-relational database (MongoDB), some crafty matching is being done in order to set the states
       of whether a user has liked and/or saved a particular article (or not) and how many likes an article has from different
       users of the site. There is a lot of looping and matching done here on in the controller logic. The endpoints at the backend
-      could be written to loop through the data stored in the database to find if a particular article is stored there or not, but 
+      could be written to loop through the data stored in the database to find if a particular article is stored there or not, but
       in this way it can be guaranteed that the loooping through all the data only happens a finite number of times instead of
       obfuscating the looping by using mongoose methods to find whether or not a particular article is in trending or a user's
       saved/liked list.
 
-      Of course, using a relational database would be better, especially as the user base grows. But given the time constraints of 
+      Of course, using a relational database would be better, especially as the user base grows. But given the time constraints of
       this project and the relatively small user base, doing some looping here to perform some matching is okay for now.
     */
 
@@ -65,14 +66,15 @@ angular.module('legacyOwls.latest', [])
       Articles.getLatest(params)
       .then(function(response) {
         // photos is an array that is set to the results array received from API
-        $scope.photos = response.data.results.filter(function(photo) {
+        console.log(response, 'this is the response');
+        $scope.photos = response.data.response.docs.filter(function(photo) {
           // only want the articles that have a photo url - some of them have multimedia = ''
           // also do not want anything that is part of a Slideshow
           // wanted to know if articles pulled from API have already been liked by users and how many likes there are
-          photo.likes = $scope.urls[photo.url] ? $scope.urls[photo.url] : 0;
+          photo.likes = $scope.urls[photo.web_url] ? $scope.urls[photo.web_url] : 0;
           // only want the articles that have a photo url - some of them have multimedia = ''
           // also do not want anything that is part of a Slideshow
-          return photo.multimedia.length === 4 && photo.item_type !== 'Slideshow';
+          return photo.multimedia.length > 1;
         });
 
       });
@@ -85,7 +87,7 @@ angular.module('legacyOwls.latest', [])
   $scope.getLatest();
 
   /*
-  // saveStory and like have been migrated to the modal -> in the future may want to again add saving and liking functionality 
+  // saveStory and like have been migrated to the modal -> in the future may want to again add saving and liking functionality
   // to the main page, so the code below is being preserved in this file
 
   // Save the news item

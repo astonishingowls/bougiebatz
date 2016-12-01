@@ -30,8 +30,8 @@
       </select>
     </div>
     <div class='largePhotos col-xs-12 col-md-4' ng-repeat='($index, photo) in photos'>
-      <a href={{photo.url}} target="_blank">
-       <img class='showImg' ng-src={{photo.multimedia[3].url}} />
+      <a href={{photo.web_url}} target="_blank">
+       <img class='showImg' ng-src='http://www.nytimes.com/{{photo.multimedia[1].url}}' />
       </a>
       <div class="sample" ng-controller="modalMainController">
         <a href class="btn btn-default" ng-click="showYesNo($index)">See More</a>
