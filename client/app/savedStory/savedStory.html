@@ -31,15 +31,14 @@
 
   <div class='photos col-xs-12' ng-repeat='article in savedArticles'>
     <div class='col-md-4'>
-      <a href={{article.url}} target="_blank">
-       <img ng-src={{article.multimedia[3].url}} />
+      <a href={{article.web_url}} target="_blank">
+       <img ng-src='http://www.nytimes.com/{{article.multimedia[1].url}}' />
       </a>  
     </div>
 
     <div class='textbox col-md-8'>
-      <h3>{{article.title}}</h3>
-      <p>{{article.byline}}</p>
-      <p class="articleSummary">{{article.abstract}}</p>
+      <h3>{{article.headline.name}}</h3>
+      <p class="articleSummary">{{article.lead_paragraph}}</p>
     </div>      
 
   </div>

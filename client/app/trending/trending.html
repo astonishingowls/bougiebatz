@@ -31,15 +31,14 @@
 
   <div class='photos col-xs-12' ng-repeat='article in trendingArticles'>
     <div class='col-xs-12 col-md-4'>
-      <a href={{article.articleData.url}} target="_blank">
-       <img ng-src={{article.articleData.multimedia[3].url}} />
+      <a href={{article.articleData.web_url}} target="_blank">
+       <img ng-src='http://www.nytimes.com/{{article.articleData.multimedia[1].url}}' />
       </a>  
     </div>
 
     <div class='textbox col-xs-12 col-md-8'>
-      <h3>{{article.articleData.title}}</h3>
-      <p>{{article.articleData.byline}}</p>
-      <p class="articleSummary">{{article.articleData.abstract}}</p>
+      <h3>{{article.articleData.headline.name}}</h3>
+      <p class="articleSummary">{{article.articleData.lead_paragraph}}</p>
       <p class="articlelikes"><i class="fa fa-thumbs-up faa-bounce animated" aria-hidden="true"></i>  {{article.numberLikes}}</p>
     </div>      
 
