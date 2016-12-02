@@ -61,20 +61,20 @@ angular.module('legacyOwls.comment', ["pageslide-directive"])
     $scope.newComment = []; //clears array of previous comments added
     $scope.getLatest = function() {
       var params = {
-        source: 'all',
-        section: $scope.selectedOption,
-        time: '24',
-        limit: 40,
-        offset: 0
+        // source: 'all',
+        // section: $scope.selectedOption,
+        // time: '24',
+        // limit: 40,
+        // offset: 0
       }
 
       //Article.getLatest is called upon toggle in order for index to be match from photo that is displayed on html.
       Articles.getLatest(params)
       .then(function(response) {
-        $scope.articles = response.data.results.filter(function(photo) {
+        $scope.articles = response.data.response.docs.filter(function(photo) {
           // only want the articles that have a photo url - some of them have multimedia = ''
           // $scope.urls[photo.url] ? photo.likes = $scope.urls[photo.url] : photo.likes = 0;
-          return photo.multimedia.length === 4;
+          return photo.multimedia.length > 1;
         });
       $scope.article = $scope.articles[$scope.idx];
       // console.log($scope.article, ' LINE 81, comment.js ')

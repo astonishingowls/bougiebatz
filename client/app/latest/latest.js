@@ -66,7 +66,6 @@ angular.module('legacyOwls.latest', [])
       Articles.getLatest(params)
       .then(function(response) {
         // photos is an array that is set to the results array received from API
-        console.log(response, 'this is the response');
         $scope.photos = response.data.response.docs.filter(function(photo) {
           // only want the articles that have a photo url - some of them have multimedia = ''
           // also do not want anything that is part of a Slideshow

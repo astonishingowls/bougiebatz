@@ -48,8 +48,8 @@ angular.module('legacyOwls.modal', [])
         // First want to pass the information about the article that is displayed in the modal using a shared factory
         var photo = $scope.photos[index];
         // Did the user already save or like the article?
-        photo.saved = $scope.saved[photo.url] ? true : false;
-        photo.liked = $scope.likes[photo.url] ? true : false;
+        photo.saved = $scope.saved[photo.web_url] ? true : false;
+        photo.liked = $scope.likes[photo.web_url] ? true : false;
 
         Photo.savePhoto(photo);
         // Modal is shown
@@ -62,12 +62,12 @@ angular.module('legacyOwls.modal', [])
             modal.close
             .then(function (result) {
                 // Be sure that we keep record that user has liked an article
-                if ($scope.photo.liked && !$scope.likes[photo.url]) {
-                    $scope.likes[photo.url] = true; 
+                if ($scope.photo.liked && !$scope.likes[photo.web_url]) {
+                    $scope.likes[photo.web_url] = true; 
                 }
                 // Be sure that we keep record that the user has saved an article
-                if ($scope.photo.saved && !$scope.saved[photo.url]) {
-                    $scope.saved[photo.url] = true;
+                if ($scope.photo.saved && !$scope.saved[photo.web_url]) {
+                    $scope.saved[photo.web_url] = true;
                 }
             });
         });
